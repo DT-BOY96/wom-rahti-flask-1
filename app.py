@@ -25,9 +25,9 @@ class User(db.Model):
         onupdate =db.func.now())
 
 #with app.app_context():
-#    db.create_all()
+#   db.create_all()
 
-@app.route("/", methods=['GET', 'POST'])
+@app.route("/", methods=['GET', 'POST', 'PATCH', 'DELETE'])
 def index():
     if request.method == 'GET':
         return { 
@@ -36,7 +36,7 @@ def index():
             'env': os.environ.get('ENV_VAR', 'Cannot find variable ENV_VAR') 
         }
 
-    if request.method =='POST':
+    if request.method ==['POST']:
         body = request.get_json()
 
         return {
@@ -44,8 +44,44 @@ def index():
             'request_body': body
         }
 
+    if request.method =='PATCH':
+        body = request.get_json()
+
+        return {
+            'msg': 'You Patched something',
+            'request_body': body
+        }
+    
+    if request.method =='DELETE':
+        body = request.get_json()
+
+        return {
+            'msg': 'You DELETED something',
+            'request_body': body
+        }
+
 
 @app.route("/users", methods=['GET', 'POST'])
+def users():
+    if request.method =='GET':
+        users  = []
+        for user in User.query.all():
+            users.append({
+                'id': user.id,
+                'email': user.email,
+                'updated_at': user.updated_at
+                })
+        return users
+    
+    if request.method == 'POST':
+        body = request.get_json()
+        new_user = User(email=body['email'])
+        db.session.add(new_user)
+        db.session.commit()
+        return { 'msg': 'User created', 'id': new_user.id}
+    
+
+@app.route("/services", methods=['GET', 'POST'])
 def users():
     if request.method =='GET':
         users  = []

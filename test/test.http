@@ -13,6 +13,25 @@ Content-Type: application/json
     "testkey": "Test value",
     "foo": "bar"
 }
+### 
+
+PATCH  {{baseUrl}}
+Content-Type: application/json
+
+{
+    "testkey": "Test value",
+    "foo": "bar"
+}
+###
+
+DELETE {{baseUrl}}
+Content-Type: application/json
+
+{
+    "testkey": "Test value",
+    "foo": "bar"
+}
+
 
 ###
 
@@ -28,5 +47,5 @@ POST {{baseUrl}}/users
 Content-Type: application/json
 
 { 
-    "email": "john.doe@foo.bar24"
+    "email": "john.doe@foo.bar4"
 }
