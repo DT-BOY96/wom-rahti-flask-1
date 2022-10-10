@@ -24,6 +24,25 @@ class User(db.Model):
         default = db.func.now(), 
         onupdate =db.func.now())
 
+class Order(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    cabin = db.Column(db.String, nullable=False)
+    date = db.Column(db.DateTime, nullable=False)
+    created_at = db.Column(db.DateTime, default = db.func.now())
+    updated_at = db.Column(db.DateTime, 
+        default = db.func.now(), 
+        onupdate =db.func.now())
+
+class Service(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    cabin = db.Column(db.String, nullable=False)
+    servicetype = db.Column(db.String, nullable=False)
+    price = db.Column(db.Integer, nullable=False)
+    created_at = db.Column(db.DateTime, default = db.func.now())
+    updated_at = db.Column(db.DateTime, 
+        default = db.func.now(), 
+        onupdate =db.func.now())
+
 #with app.app_context():
 #   db.create_all()
 
@@ -81,7 +100,7 @@ def users():
         return { 'msg': 'User created', 'id': new_user.id}
     
 
-@app.route("/services", methods=['GET', 'POST'])
+@app.route("/orders", methods=['GET', 'POST'])
 def services():
     if request.method =='GET':
         users  = []
