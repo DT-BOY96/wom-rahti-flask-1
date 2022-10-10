@@ -82,7 +82,7 @@ def users():
     
 
 @app.route("/services", methods=['GET', 'POST'])
-def users():
+def services():
     if request.method =='GET':
         users  = []
         for user in User.query.all():
