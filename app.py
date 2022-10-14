@@ -1,5 +1,5 @@
 from distutils.log import debug
-import os, json, requests
+import os, requests
 from flask import Flask, request
 from dotenv import load_dotenv
 from flask_sqlalchemy import SQLAlchemy
@@ -8,9 +8,9 @@ load_dotenv()
 
 app = Flask(__name__)
 
+# SQLAlchemy (postgresql)
 # create the extension
 db = SQLAlchemy()
-#SQLAlchemy (postgresql)
 # configure the SQLite database, relative to the app instance folder
 app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get('DB_URL')
 # initialize the app with the extension
