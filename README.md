@@ -16,4 +16,6 @@
 - The `.devcontainer` folder is a VSCode thing, not needed for Rahti. 
 
 
+# womprojekt2-pyt
+Repo för python koden för projekt 2
 

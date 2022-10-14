@@ -1,0 +1,9 @@
+@baseURL = https://wom22-projekt2-2.azurewebsites.net
+
+GET {{baseURL}}/cabins
+Authorization: 
+
+
+
+POST {{baseURL}}/cabins/login
+Authorization: 
